@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en" >
+<head>
+<meta charset="UTF-8">
+<title>vue实现冒泡排序可视化特效 - A5源码</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+<div id="app">
+	<div class="cards">
+		<sort-card v-for="(card, index) in store.state.cards" :key="index" :value="card.value" :sort-index="card.sortIndex" :is-active="card.isActive" :is-locked="card.isLocked"></sort-card>
+	</div>
+	<div class="control-panel">
+		<h1>Bubble Sort Visualizer</h1>
+		<button aria-label="Reset" v-if="store.state.done" @click="reset(SORT_ARRAY)">
+			<i class="fa fa-refresh" aria-hidden="true"></i>
+		</button>
+	</div>
+</div>
+
+<script type="text/x-template" id="sort-card-template">
+
+	<!-- 绑定内联样式，通过 height 和 transform 来显示不同的div -->
+	<div class="card-wrapper" :data-sort-index="sortIndex" v-bind:style="{height: value * HEIGHT_INCREMENT + 'px',transform: 'translateX('+sortIndex*100+'%)'}">
+	<!-- 通过改变class，来改变颜色 -->
+	<div class="card" :class="cardClassObject">
+	<div class="value">{{value}}</div>
+	</div>
+	</div>
+  
+</script>
+
+<script src='js/vue.min.js'></script>
+<script src='js/vuex.min.js'></script>
+
+<script src="js/index.js"></script>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>适用浏览器：360、FireFox、Chrome、Opera、傲游、搜狗、世界之窗. 不支持Safari、IE8及以下浏览器。</p>
+<p>来源：<a href="http://down.admin5.com/" target="_blank">A5源码</a></p>
+</div>
+</body>
+</html>

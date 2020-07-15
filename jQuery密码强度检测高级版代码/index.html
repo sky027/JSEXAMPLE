@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" dir="ltr" ng-app ng-controller="HSIMP.app">
+<head>
+<meta charset="utf-8">
+<title>jQuery密码强度检测高级版代码 - A5源码</title>
+<link rel="stylesheet" href="css/screen.css">
+<meta name="viewport" content="width=device-width">
+</head>
+<body >
+<br>
+<noscript id="no-js">
+	<p class="sorry">出于安全原因，该网站需要JavaScript的支持.</P >
+	<p class="sorry">非常抱歉！</p>
+</noscript>
+<div id="js">
+  <div role="main">
+	<div class="input">
+		<input type="password" id="password" ng-model="password" ng-change="passwordChange()" placeholder="请输入您的密码" class="password" autofocus>
+	</div>
+
+	<div class="phishing" ng-hide="password">
+		<p>任何一个网站都可以盗取您的密码,所以在每次输入密码前都要谨慎一些比较好</p>
+	</div>
+
+	<div ng-show="password">
+		<ul ng-show="display.config">
+			<li>
+				<label><input type="checkbox" ng-model="config.namedNumbers" ng-change="config.changeNamedNumbers()" />Use Named Numbers</label>
+			</li>
+			<li>
+				<label>Calculations per second</label>
+				<input type="text" ng-model="config.calculations" ng-change="config.changeCalculations()" />
+			</li>
+		</ul>
+
+		<div class="results">
+			<span class="toggle" ng-click="display.toggleConfig()">{{display.configText}}</span>
+
+
+			<p ng-hide="insecure">可能只需要一台<span ng-show="config.calculationsOriginal">普通的PC</span> 用时 <span class="main">{{time}}</span> 来破解您的密码</p>
+			 
+
+			<p ng-show="insecure">您的密码破解时间为<span class="main">瞬间</span></p>
+			
+
+			<span class="toggle" ng-click="display.toggleDetails()">{{display.detailsText}}</span>
+		</div>
+
+		<ul ng-show="display.details">
+			<li><strong>Length:</strong> {{length}} characters</li>
+			<li><strong>Character Combinations:</strong> {{characters}}</li>
+			<li><strong>Calculations Per Second:</strong> {{calcsPerSecond}}</li>
+			<li><strong>Possible Combinations:</strong> {{possibleCombinations}}</li>
+		</ul>
+
+		<ul ng-show="checks">
+			<li ng-repeat="check in checks" class="{{check.type}}">
+				<h2 ng-bind-html-unsafe="check.title"></h2>
+				<p ng-bind-html-unsafe="check.wording"></p>
+			</li>
+		</ul>
+	</div>
+
+  </div>
+
+
+<br>
+
+</div>
+
+<script>
+	var HSIMP = {
+		language: {}
+	};
+</script>
+
+<script src="js/en-min.js"></script>
+<script src="js/app.min.js"></script>
+
+<div id="fb-root"></div>  
+<div style="text-align:center;">
+<p>来源:<a href="http://down.admin5.com/" target="_blank">A5源码</a></p>
+</div>
+</body>
+</html>

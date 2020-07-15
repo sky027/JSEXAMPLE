@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>jQuery下拉框菜单选中插件 - A5源码</title>
+
+<link rel="stylesheet" href="css/select.css">
+
+</head>
+<body>
+
+<br><br><br><br>
+
+<div id="demo1" class="selectPickerWrapper"> 
+	<select class="hidden" multiple="multiple">
+		<option>万源路</option>
+		<option>漕宝路666号</option>
+		<option>古美街道</option>
+		<option>平南路888号</option>
+		<option>合川路</option>
+		<option>莲花路4545号</option>
+	</select>
+</div> 
+
+<div id="demo2" class="selectPickerWrapper"> 
+	<select class="hidden" multiple="multiple">
+		<option>1111</option>
+		<option>222</option>
+		<option>333</option>
+		<option>444</option>
+		<option>555</option>
+		<option>666</option>
+	</select>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/select.js"></script>
+<script>
+$(function() {        	
+	$("#demo1").mySelect();
+	$("#demo2").mySelect();
+});
+</script> 
+
+</body>
+</html>

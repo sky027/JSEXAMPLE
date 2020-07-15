@@ -1,0 +1,258 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CSS3图标导航渐变背景切换特效 - A5源码</title>
+
+<!--图标库-->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
+
+<!--核心样式-->
+<link type="text/css" href="css/style.css" rel="stylesheet" />
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+
+</head>
+<body>
+
+<!--PEN HEADER-->
+<div class="header">
+  <h1 class="header__title">梯度导航</h1>
+</div>
+<!--PEN CONTENT-->
+
+<div class="content">
+
+  <div class="content__section">
+    <h2 class="content__title">梯度方向</h2>
+    <div class="content__section-inner">
+      <div class="btns">
+        <button class="btn grad-btn grad-btn--top" type="button" title="to top" data-dir="top"><i class="fas fa-long-arrow-alt-right"></i></button>
+        <button class="btn grad-btn grad-btn--left" type="button" title="to left" data-dir="left"><i class="fas fa-long-arrow-alt-right"></i></button>
+        <button class="btn btn--sm grad-btn grad-btn--bottom" type="button" title="to bottom" data-dir="bottom"><i class="fas fa-long-arrow-alt-right"></i></button>
+        <button class="btn btn--sm grad-btn" type="button" title="to right" data-dir="right"><i class="fas fa-long-arrow-alt-right"></i></button>
+        <button class="btn btn--sm grad-btn grad-btn--top-left" type="button" title="to top left" data-dir="top left"><i class="fas fa-long-arrow-alt-right"></i></button>
+        <button class="btn btn--sm grad-btn grad-btn--top-right js-active" type="button" title="to top right" data-dir="top right"><i class="fas fa-long-arrow-alt-right"></i></button>
+        <button class="btn btn--sm grad-btn grad-btn--bottom-left" type="button" title="to bottom left" data-dir="bottom left"><i class="fas fa-long-arrow-alt-right"></i></button>
+        <button class="btn btn--sm grad-btn grad-btn--bottom-right" type="button" title="to bottom right" data-dir="bottom right"><i class="fas fa-long-arrow-alt-right"></i></button>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="content__section">
+    <div class="content__section-inner nav-area" data-gradient="#00fff0, #5c9ff7 40%, #d322ff 80%" data-gradient-direction="right top">
+      <div class="nav-area__item">
+        <div class="nav-area__item-icon"><i class="fas fa-home"></i></div>
+        <div class="nav-area__item-title">
+          <p>网站首页</p>
+        </div>
+      </div>
+      <div class="nav-area__item">
+        <div class="nav-area__item-icon"><i class="fas fa-user"></i></div>
+        <div class="nav-area__item-title">
+          <p>公司简介</p>
+        </div>
+      </div>
+      <div class="nav-area__item">
+        <div class="nav-area__item-icon"><i class="fas fa-cog"></i></div>
+        <div class="nav-area__item-title">
+          <p>系统设置</p>
+        </div>
+      </div>
+      <div class="nav-area__item">
+        <div class="nav-area__item-icon"><i class="fas fa-credit-card"></i></div>
+        <div class="nav-area__item-title">
+          <p>付款方式</p>
+        </div>
+      </div>
+      <div class="nav-area__item">
+        <div class="nav-area__item-icon"><i class="fas fa-phone-alt"></i></div>
+        <div class="nav-area__item-title">
+          <p>联系我们</p>
+        </div>
+      </div>
+      <div class="nav-area__item">
+        <div class="nav-area__item-icon"><i class="fas fa-comment"></i></div>
+        <div class="nav-area__item-title">
+          <p>技术支持</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<script>
+const nav = document.querySelector('.nav-area');
+const navItems = document.querySelectorAll('.nav-area__item');
+
+//grabbing gradient value
+const gradValue = () => {
+
+  return nav.dataset.gradient;
+
+};
+
+//grabbing gradient direction
+const gradDir = () => {
+
+  return nav.dataset.gradientDirection;
+
+};
+
+//building a gradient image
+const buildGrad = (value, direction) => {
+
+  return `to ${direction}, ${value}`;
+
+};
+
+//calc background-size
+const gradSize = () => {
+
+  //get number of columns
+  let firstItemPosX = navItems[0].getBoundingClientRect().left;
+  let cols = 1;
+
+  for (let i = 1; i < navItems.length; i++) {
+
+    if (navItems[i].getBoundingClientRect().left > firstItemPosX) {
+      cols++;
+    } else {
+      break;
+    }
+
+  }
+
+  //get number of rows
+  let itemPosY = navItems[0].getBoundingClientRect().top;
+  let rows = 1;
+
+  for (let i = 1; i < navItems.length; i++) {
+
+    if (navItems[i].getBoundingClientRect().top > itemPosY) {
+      rows++;
+
+      itemPosY = navItems[i].getBoundingClientRect().top;
+    }
+
+  }
+
+  // get size of 1 item
+  const itemWidth = navItems[0].offsetWidth;
+  const itemHeight = navItems[0].offsetHeight;
+
+  //get gradient size
+  let gradSizeX = itemWidth * cols;
+  let gradSizeY = itemHeight * rows;
+
+  return [gradSizeX, gradSizeY, cols, rows];
+
+};
+
+// add col and row for every item
+const colRow = () => {
+
+  let row = 1;
+  let col = 1;
+
+  let xItemPos = navItems[0].getBoundingClientRect().left;
+
+  //setting cols
+  for (let i = 0; i < navItems.length; i++) {
+
+    if (navItems[i].getBoundingClientRect().left > xItemPos) {
+      col++;
+    } else {
+      col = 1;
+    }
+
+    navItems[i].dataset.col = col;
+  }
+
+  //setting rows
+  let yItemPos = navItems[0].getBoundingClientRect().top;
+
+  for (let i = 0; i < navItems.length; i++) {
+
+    if (navItems[i].getBoundingClientRect().top > yItemPos) {
+      row++;
+
+      yItemPos = navItems[i].getBoundingClientRect().top;
+    }
+
+    navItems[i].dataset.row = row;
+
+  }
+};
+
+//setting gradient styles
+const setGrad = elem => {
+
+  //background image style
+  const bgImg = `linear-gradient(${buildGrad(gradValue(), gradDir())})`;
+
+  elem.style.backgroundImage = bgImg;
+
+  //background size style
+  const bgSizeX = `${gradSize()[0]}`;
+  const bgSizeY = `${gradSize()[1] + 5}`;
+
+  elem.style.backgroundSize = `${bgSizeX}px ${bgSizeY}px`;
+
+  //background position style
+  const bgPosX = bgSizeX * (elem.dataset.col - 1) / gradSize()[2];
+  const bgPosY = bgSizeY * (elem.dataset.row - 1) / gradSize()[3];
+
+  elem.style.backgroundPosition = `${-bgPosX}px ${-bgPosY}px`;
+
+};
+
+//setting gradient styles function
+const setGradientBg = () => {
+  navItems.forEach(elem => {
+
+    colRow();
+
+    setGrad(elem);
+
+  });
+};
+
+//setting gradient onload
+setGradientBg();
+
+//recalc and set gradient on resize
+window.addEventListener('resize', setGradientBg);
+
+//rebuild grad on direction button click 
+const dirBtns = document.querySelectorAll('.grad-btn');
+
+dirBtns.forEach(elem => {
+
+  elem.addEventListener('click', () => {
+
+    //setting new direction
+    const dir = elem.dataset.dir;
+
+    nav.dataset.gradientDirection = dir;
+
+    //recalc background
+    setGradientBg();
+
+    //make clicked btn active
+    dirBtns.forEach(elem => elem.classList.remove('js-active'));
+
+    elem.classList.add('js-active');
+
+  });
+
+});
+</script>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>适用浏览器：360、FireFox、Chrome、Opera、傲游、搜狗、世界之窗. 不支持Safari、IE8及以下浏览器。</p>
+<p>来源：<a href="http://www.a5xiazai.com/" target="_blank">A5源码</a></p>
+</div>
+</body>
+</html>

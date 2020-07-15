@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>基于Bootstrap表格导出Excel插件 - A5源码</title>
+<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/css/bootstrap.min.css"><!--包含图标库-->
+<link rel="stylesheet" href="bootstrap/css/bootstrap-table.css" />	
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="bootstrap/js/bootstrap-table.js"></script>
+<script src="bootstrap/js/bootstrap-table-export.js"></script>
+<script src="bootstrap/js/jquery.base64.js"></script>
+<script src="bootstrap/js/tableExport.js"></script>
+
+</head>
+<body>
+
+<div id="reportTableDiv" class="span10" style="width:70%">
+	<table id="reportTable" >
+	</table>
+</div>
+
+<script type="text/javascript">
+	$(function () {
+		$('#reportTable').bootstrapTable({
+			method: 'get',
+			cache: false,
+			height: 400,
+			striped: true,
+			pagination: true,
+			pageSize: 20,
+			pageNumber:1,
+			pageList: [10, 20, 50, 100, 200, 500],
+			search: true,
+			showColumns: true,
+			showRefresh: true,
+			showExport: true,
+			exportTypes: ['excel'],
+			clickToSelect: true,
+			columns: [
+			{field:"user_email",title:"email",align:"center",valign:"middle",sortable:"true"},	
+			{field:"user_company",title:"company",align:"center",valign:"middle",sortable:"true"},  
+			{field:"user_dates",title:"date",align:"center",valign:"middle",sortable:"true"},
+			{field:"user_lastlogintime",title:"lastlogintime",align:"center",valign:"middle",sortable:"true"},
+			{field:"user_version",title:"version",align:"center",valign:"middle",sortable:"true"},
+			{field:"user_isv2",title:"isv2",align:"center",valign:"middle",sortable:"true"},		
+			{field:"userstatus_usertype",title:"usertype",align:"center",valign:"middle",sortable:"true"},
+			{field:"userstatus_package_id",title:"package_id",align:"center",valign:"middle",sortable:"true"},
+			{field:"userstatus_end_time",title:"end_time",align:"center",valign:"middle",sortable:"true"}
+			],
+			data : [
+			{"user_email":"20dai.rikon@gmail.com","user_company":"abc","user_dates":"2014-10-13 13:35:51","user_lastlogintime":"0","user_version":"0","user_isv2":"0","userstatus_usertype":"0","userstatus_package_id":"100014","userstatus_end_time":"人间"},
+			{"user_email":"20140416@xxxxddffg.com","user_company":"我是中文","user_dates":"2014-10-13 13:35:51","user_lastlogintime":"0","user_version":"1","user_isv2":"0","userstatus_usertype":"0","userstatus_package_id":"100001","userstatus_end_time":"NULL"},
+			{"user_email":"20083matsumoto-hs@polus.co.jp","user_company":"ABC","user_dates":"2014-10-31 13:02:47","user_lastlogintime":"1414726074","user_version":"0","user_isv2":"1","userstatus_usertype":"0","userstatus_package_id":"100014","userstatus_end_time":"0"},
+			{"user_email":"20.2.n0.5@gmail.com","user_company":"我支持ie下载哦","user_dates":"2014-11-21 11:00:10","user_lastlogintime":"1416564204","user_version":"0","user_isv2":"0","userstatus_usertype":"0","userstatus_package_id":"100014","userstatus_end_time":"0"}
+			],
+			onPageChange: function (size, number) {
+				console.log("页面发生了变化")
+				//$("#pageSizeInput").val(size);
+				//$("#pageNumberInput").val(number);
+				
+				//var form = $('#tableForm');
+				//form.action= '${base}/showReport';
+				//form.submit();
+			},
+			//onSort: function (name, order) {
+		   // },
+			//formatShowingRows: function (pageFrom, pageTo, totalRows) {
+			//	return '';
+		   // },
+			//formatRecordsPerPage: function () {
+			//	return '';
+		  //  },
+//              formatNoMatches: function(){
+//              	return '�޷�������ļ�¼';
+//              }
+		});
+							
+		$(window).resize(function () {
+			$('#reportTable').bootstrapTable('resetView');
+		});
+	});
+	
+</script>
+</body>
+</html>

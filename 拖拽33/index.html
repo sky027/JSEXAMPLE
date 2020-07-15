@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>简单好用的jQuery插件——Tdrag.js可以任意拖拽div内容</title>
+  <style>
+    *{margin:0;padding:0;list-style:none;}
+    .lanren{
+      width:200px;
+      height:200px;
+      position:absolute;
+      right:100px;
+      top:100px;
+      background:url("images/admin5.png") no-repeat center center;
+    }
+  </style>
+</head>
+<body>
+  <!-- 代码部分begin -->
+  <div class="lanren"></div>
+  <script src="js/jquery1.7.2.js"></script>
+  <script src="js/Tdrag.js"></script>
+  <script>
+    $(function(){
+      $(".lanren").Tdrag();
+    })
+  </script>
+  <!-- 代码部分end -->
+</body>
+</html>

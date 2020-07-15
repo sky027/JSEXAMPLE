@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap");
+* {
+  box-sizing: border-box;
+  padding:0;margin:0;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  overflow: hidden;
+  background:#f5f5f5;
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  display: block;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
+  border-radius: 50%;
+  text-align: center;
+  transition: .5s;
+}
+
+.project {
+  width: 80px;
+  flex-shrink: 0;
+  margin: 0 10px;
+  height: 80px;
+  border-radius: 50%;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+  left: 0;
+  transition: .4s;
+  top: 0;
+  position: relative;
+  z-index: 1;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+}
+
+.project-name {
+  position: absolute;
+  width: 140px;
+  text-align: center;
+  left: 50%;
+  top: 100%;
+  font-size: 14px;
+  transition: .3s;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  -webkit-transform: translateX(-50%) translateY(0) scale(0.8);
+          transform: translateX(-50%) translateY(0) scale(0.8);
+  z-index: -1;
+}
+@media (max-width: 768px) {
+  .project-name {
+    display: none;
+  }
+}
+
+.project:hover {
+  z-index: 2;
+}
+
+.project:hover > .project-name {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: translateX(-50%) translateY(10px) scale(1);
+          transform: translateX(-50%) translateY(10px) scale(1);
+}
+
+.project.is-selected {
+  z-index: 2;
+}
+
+.project.is-selected > .project-img {
+  box-shadow: 0 0 0 6px red;
+}
+
+.showcase.is-dragging .project {
+  pointer-events: none;
+  transition: none;
+}
+
+.showcase.is-dragging .drop {
+  border-color: red;
+  color: red;
+}
+
+.drop {
+  position: fixed;
+  bottom: 20px;
+  left: calc(50% - 45px);
+  width: 90px;
+  height: 90px;
+  border: 3px solid #ddd;
+  color: #b7b7b7;
+  border-radius: 50%;
+  transition: .5s;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 10px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.drop.is-ready {
+  color: transparent;
+  background-color: red;
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
+}
+
+.drop.is-dropped {
+  z-index: 3;
+  background-color: red;
+  border-color: red;
+  color: #fff;
+  font-size: 12px;
+  width: 64px;
+  height: 64px;
+  left: calc(50% - 32px);
+  cursor: pointer;
+}
+
+.project.is-expanded > .project-img {
+  border-radius: 0;
+}
+
+.project.is-expanded > .project-name {
+  display: none;
+}
+
+.showcase {
+  height: 100vh;
+  overflow: hidden;
+  justify-content: space-evenly;
+  align-items: center;
+  display: flex;
+}
+
+.showcase.is-preview > .project {
+  pointer-events: none;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+}
+
+.showcase.is-preview > .project.is-expanded {
+  opacity: 1;
+  transition: .7s;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: none !important;
+          transform: none !important;
+  z-index: 2;
+}

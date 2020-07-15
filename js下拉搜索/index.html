@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>jQuery下拉搜索菜单选择插件 - A5源码</title>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<!--框架和图标样式-->
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!--下拉样式-->
+<link rel="stylesheet" type="text/css" href="css/index.css">
+
+</head>
+<body>
+
+<div class="box">
+	<h4>下拉模糊查询</h4>
+	
+	<div class="dropdown custom1">
+		<button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+			<em>请选择</em>
+			<i class="caret"></i>
+		</button>
+		<ul class="dropdown-menu">
+			<li >
+				<input class="form-control seach_name" placeholder="请输入搜索内容">
+				<i class="glyphicon glyphicon-search"></i>
+			</li>
+			<li data = "网页特效"><a>网页特效</a></li>
+			<li data = "网页设计"><a>网页设计</a></li>
+			<li data = "前端开发"><a>前端开发</a></li>
+			<li data = "php程序员"><a>php程序员</a></li>
+			<li data = "java开发"><a>java开发</a></li>
+			<li data = ".net编程"><a>.net编程</a></li>
+		</ul>
+	</div>
+
+</div>
+
+<script src="js/index.js"></script>
+<script>
+	$(function(){
+		//new一个实例
+		new DropdownSearch('.custom1');
+		//new DropdownSearch('.custom2')
+		
+	})
+</script>
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>适用浏览器：360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. 不支持IE8及以下浏览器。</p>
+<p>来源：<a href="http://www.a5xiazai.com/" target="_blank">A5源码</a></p>
+</div>
+</body>
+</html>

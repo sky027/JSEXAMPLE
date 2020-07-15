@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>基于ES6的DOM元素动画库插件 - A5源码</title>
+
+<link rel="stylesheet" href="css/docs.min.css">
+<link rel="stylesheet" type="text/css" href="css/zzsc.css">
+<link rel="stylesheet" href="./theme/css/t-scroll.min.css">
+<link rel="stylesheet" href="./theme/css/style.css">
+
+</head>
+<body>
+<div class="zzsc-container">
+	<header class="zzsc-header">
+		<h1>基于ES6的DOM元素动画库插件 <span>Animate Elements On Reveal – t-scroll</span></h1>
+		<div class="zzsc-demo center">
+		  <a href="index.html" class="current">index</a>
+		  <a href="index2.html">各种效果测试</a>
+		</div>
+	</header>
+	<section class="section section-banner">
+			<div class="section-content">
+				<h1 class="title">
+					<span class="slideDown t_animated" t_show="1">t</span>
+					<span class="slideDown t_animated" t_show="2">-</span>
+					<span class="slideDown t_animated" t_show="3">s</span>
+					<span class="slideDown t_animated" t_show="4">c</span>
+					<span class="slideDown t_animated" t_show="5">r</span>
+					<span class="slideDown t_animated" t_show="6">o</span>
+					<span class="slideDown t_animated" t_show="7">l</span>
+					<span class="slideDown t_animated" t_show="8">l</span>
+				</h1>
+				<p class="section-info zoomIn t_animated">
+					When you start scrolling, you will see interesting events.
+				</p>
+				<a href="http://sc.chinaz.com/jiaoben/" class="btn btn-main btn-lg slideLeft t_animated" target="_blank">jQuery特效</a>
+				<a href="http://sc.chinaz.com/yinxiao/" class="btn btn-border btn-lg slideRight t_animated" target="_blank">音效大全</a>
+
+			</div>
+			<button class="btn btn-animation">
+				<span class="dot"></span>
+			</button>
+		</section>
+
+		<section class="section section-function">
+			<h2 class="section-title">Why Choose t-scroll</h2>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6 col-md-4 slideDown" t_show="1">
+						<div class="box">
+							<div class="box-head">
+								<h3 class="title">
+									Fully Customisable
+								</h3>
+							</div>
+							<div class="box-body">
+								Over 45 options. Easy for novice users and even more powerful for advanced developers.
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 col-md-4 slideDown" t_show="2">
+						<div class="box box-es6">
+							<div class="box-head">
+								<h3 class="title">
+									ES6 / Bable
+								</h3>
+							</div>
+							<div class="box-body">
+								t-scroll do not used jQuery. It's used ES6
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 col-md-4 slideDown" t_show="3">
+						<div class="box box-sass">
+							<div class="box-head">
+								<h3 class="title">
+									SASS / CSS3
+								</h3>
+							</div>
+							<div class="box-body">
+								t-scroll ships with vanilla Sass. Quickly get started with precompiled CSS or build on the source.
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-6 col-md-4 slideUp" t_show="1">
+						<div class="box box-gulp">
+							<div class="box-head">
+								<h3 class="title">
+									Gulp
+								</h3>
+							</div>
+							<div class="box-body">
+								t-scroll had is built by gulp
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 col-md-4 slideUp" t_show="2">
+						<div class="box box-browser">
+							<div class="box-head">
+								<h3 class="title">
+									Browser support
+								</h3>
+							</div>
+							<div class="box-body">
+								Cross browser compatible ( Internet Explorer 10+, Firefox, Safari, Opera, Chrome etc. )
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 col-md-4 slideUp" t_show="3">
+						<div class="box box-npm">
+							<div class="box-head">
+								<h3 class="title">
+									npm
+								</h3>
+							</div>
+							<div class="box-body">
+								Setup t-scroll easily with node.js
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+</div>
+
+<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="theme/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="theme/js/t-scroll.min.js"></script>
+	<script type="text/javascript">
+	Tu.t_scroll({
+		't_element': '.title .slideDown',
+		't_duration': 0.1,
+		't_delay': 0.5
+	})
+	Tu.t_scroll({
+		't_element': '.section-function .slideDown',
+		't_duration': 0.5,
+	})
+	Tu.t_scroll({
+		't_element': '.section-function .slideUp',
+		't_duration': 0.5,
+	})
+
+	Tu.t_scroll({
+		't_element': '.slideRight'
+	})
+	Tu.t_scroll({
+		't_element': '.slideLeft'
+	})
+
+
+</script>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>适用浏览器：360、FireFox、Chrome、Opera、傲游、搜狗、世界之窗. 不支持Safari、IE8及以下浏览器。</p>
+<p>来源：<a href="http://down.admin5.com/" target="_blank">A5源码</a></p>
+</div>
+</body>
+</html>
